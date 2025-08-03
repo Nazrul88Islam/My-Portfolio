@@ -1,26 +1,285 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 47.4% 11.2%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 47.4% 11.2%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 47.4% 11.2%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    line-height: 1.6;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --color-input: #e5e7eb;
+  --color-ring: #1f2937;
+  --color-chart-1: #1f2937;
+  --color-chart-2: #10b981;
+  --color-chart-3: #6b7280;
+  --color-chart-4: #e5e7eb;
+  --color-chart-5: #ef4444;
+  --color-sidebar: #f9fafb;
+  --color-sidebar-foreground: #4b5563;
+  --color-sidebar-primary: #1f2937;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #e5e7eb;
+  --color-sidebar-accent-foreground: #1f2937;
+  --color-sidebar-border: #d1d5db;
+  --color-sidebar-ring: #10b981;
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: #e5e7eb;
+  }
+}
+
+@layer utilities {
+  body {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+  }
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #1f2937;
+    --card: #ffffff;
+    --card-foreground: #1f2937;
+    --popover: #ffffff;
+    --popover-foreground: #1f2937;
+    --primary: #1f2937;
+    --primary-foreground: #ffffff;
+    --secondary: #f9fafb;
+    --secondary-foreground: #1f2937;
+    --muted: #f9fafb;
+    --muted-foreground: #6b7280;
+    --accent: #10b981;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #e5e7eb;
+    --input: #e5e7eb;
+    --ring: #1f2937;
+    --chart-1: #1f2937;
+    --chart-2: #10b981;
+    --chart-3: #6b7280;
+    --chart-4: #e5e7eb;
+    --chart-5: #ef4444;
+    --radius: 0.5rem;
+    --sidebar-background: #f9fafb;
+    --sidebar-foreground: #4b5563;
+    --sidebar-primary: #1f2937;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #e5e7eb;
+    --sidebar-accent-foreground: #1f2937;
+    --sidebar-border: #d1d5db;
+    --sidebar-ring: #10b981;
+  }
+
+  .dark {
+    --background: #111827;
+    --foreground: #f9fafb;
+    --card: #111827;
+    --card-foreground: #f9fafb;
+    --popover: #111827;
+    --popover-foreground: #f9fafb;
+    --primary: #f9fafb;
+    --primary-foreground: #111827;
+    --secondary: #1f2937;
+    --secondary-foreground: #f9fafb;
+    --muted: #1f2937;
+    --muted-foreground: #9ca3af;
+    --accent: #10b981;
+    --accent-foreground: #111827;
+    --destructive: #dc2626;
+    --destructive-foreground: #f9fafb;
+    --border: #374151;
+    --input: #374151;
+    --ring: #f9fafb;
+    --chart-1: #10b981;
+    --chart-2: #374151;
+    --chart-3: #9ca3af;
+    --chart-4: #4b5563;
+    --chart-5: #f87171;
+    --sidebar-background: #111827;
+    --sidebar-foreground: #e5e7eb;
+    --sidebar-primary: #10b981;
+    --sidebar-primary-foreground: #111827;
+    --sidebar-accent: #374151;
+    --sidebar-accent-foreground: #f9fafb;
+    --sidebar-border: #374151;
+    --sidebar-ring: #10b981;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    line-height: 1.6;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--foreground);
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+  }
+
+  small {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+  }
+
+  code {
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    font-size: 0.875rem;
+    padding: 0.125rem 0.25rem;
+    background-color: var(--secondary);
+    border-radius: 0.25rem;
+    color: var(--accent);
+  }
+
+  pre {
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    line-height: 1.5;
+    background-color: var(--secondary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--primary);
+  }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
