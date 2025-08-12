@@ -1,10 +1,10 @@
 "use client";
 
-import { Github, ExternalLink, Code2, Database, Globe } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { Code2, ExternalLink, Github } from "lucide-react";
 
 interface Project {
   name: string;
@@ -79,6 +79,14 @@ const projects: Project[] = [
     technologies: ["React.js", "Tailwind CSS", "Framer Motion", "Chart.js"],
     type: "Health & Wellness Web App",
     demo: "https://mind-leap.vercel.app/",
+  },
+
+  {
+    name: "AxonEase solution Website",
+    description: "Brief description about AxonEase solution Software firm.",
+    technologies: ["React.js", "Tailwind CSS", "Framer Motion", "Next.js"],
+    type: "AxonEase solution Company Website",
+    demo: "https://axoneasebd.com/",
   },
 ];
 
